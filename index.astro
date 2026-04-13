@@ -1,0 +1,60 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Digitales Ehrenamt | Web-Modernisierung für Vereine">
+    <header class="container mx-auto px-6 pt-20 pb-16 text-center">
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
+            Digitaler Rückenwind für <br>
+            <span class="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
+                deinen Verein.
+            </span>
+        </h1>
+        <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Ich unterstütze Vereine und Ehrenämter dabei, ihre digitale Präsenz zu modernisieren – 
+            ehrenamtlich, professionell und mit Leidenschaft für den guten Zweck.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="#kontakt" class="bg-brand-primary hover:scale-105 transition-all text-white px-8 py-4 rounded-2xl font-bold text-lg glow-hover">
+                Jetzt Projekt anfragen
+            </a>
+            <a href="/projekte" class="bg-slate-900 border border-slate-800 hover:bg-slate-800 transition text-white px-8 py-4 rounded-2xl font-bold text-lg">
+                Referenzen ansehen
+            </a>
+        </div>
+    </header>
+
+    <section class="container mx-auto px-6 py-24 border-t border-slate-900">
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="p-8 bg-slate-900/50 border border-slate-800 rounded-3xl">
+                <div class="w-12 h-12 bg-brand-primary/20 rounded-2xl flex items-center justify-center text-brand-primary text-2xl mb-6">🚀</div>
+                <h3 class="text-xl font-bold text-white mb-4">Modernisierung</h3>
+                <p class="text-slate-400 leading-relaxed">Veraltete Webseiten bringen wir auf den neuesten Stand der Technik – schnell, sicher und mobil optimiert.</p>
+            </div>
+            <div class="p-8 bg-slate-900/50 border border-slate-800 rounded-3xl">
+                <div class="w-12 h-12 bg-brand-secondary/20 rounded-2xl flex items-center justify-center text-brand-secondary text-2xl mb-6">🤝</div>
+                <h3 class="text-xl font-bold text-white mb-4">Ehrenamtlich</h3>
+                <p class="text-slate-400 leading-relaxed">Mein Beitrag zur Gesellschaft: Für gemeinnützige Vereine biete ich meine Expertise komplett kostenfrei an.</p>
+            </div>
+            <div class="p-8 bg-slate-900/50 border border-slate-800 rounded-3xl">
+                <div class="w-12 h-12 bg-brand-primary/20 rounded-2xl flex items-center justify-center text-brand-primary text-2xl mb-6">🛠️</div>
+                <h3 class="text-xl font-bold text-white mb-4">Wartungsfrei</h3>
+                <p class="text-slate-400 leading-relaxed">Ich setze auf moderne Tools, die für euch einfach zu bedienen sind und keine teuren Serverkosten verursachen.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="container mx-auto px-6 py-24 mb-20">
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-[3rem] p-12 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 blur-[100px] rounded-full"></div>
+            <h2 class="text-4xl font-bold text-white mb-6">Lass uns reden!</h2>
+            <p class="text-xl text-slate-400 mb-10 max-w-xl mx-auto">
+                Hast du eine Idee oder braucht dein Verein digitale Hilfe? Schreib mir einfach eine Nachricht.
+            </p>
+            <a href="mailto:skm79925+EhrenCode@gmail.com" class="inline-flex items-center gap-3 bg-white text-slate-950 px-10 py-5 rounded-2xl font-bold text-xl hover:scale-105 transition-transform">
+                <span>E-Mail schreiben</span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+        </div>
+    </section>
+</MainLayout>
