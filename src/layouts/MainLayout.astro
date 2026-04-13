@@ -1,0 +1,17 @@
+---
+const { title } = Astro.props;
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <title>{title} | EhrenCode</title>
+    <!-- Tailwind wird bei Astro automatisch konfiguriert -->
+</head>
+<body class="bg-slate-950 text-slate-200">
+    <Header />
+    <slot /> <!-- Hier wird der Inhalt der jeweiligen Seite eingefügt -->
+    <Footer />
+</body>
+</html>
