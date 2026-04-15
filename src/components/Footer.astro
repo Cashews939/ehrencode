@@ -1,17 +1,25 @@
 ---
-
+// src/components/Footer.astro
 ---
-<footer class="py-16 border-t border-slate-800 bg-slate-900/50">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-        <div class="font-bold text-xl bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent mb-4">
-            EhrenCode
-        </div>
-        <p class="text-slate-500 text-sm">
-            &copy; 2026 Shing-Kong Man | Ehrenamtliche Digitalisierung
-        </p>
-        <div class="mt-6 flex justify-center space-x-6 text-slate-400 text-sm">
-            <a href="/impressum" class="hover:text-white transition">Impressum</a>
-            <a href="/datenschutz" class="hover:text-white transition">Datenschutz</a>
+<footer class="py-8 border-t border-slate-800 bg-slate-900/30">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            <div class="text-center md:text-left">
+                <div class="font-bold text-lg bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
+                    EhrenCode
+                </div>
+                <p class="text-slate-500 text-xs mt-1">
+                    &copy; {new Date().getFullYear()} Shing-Kong Man
+                </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs font-medium text-slate-400">
+                <a href="/impressum" class="hover:text-brand-secondary transition-colors">Impressum</a>
+                <a href="/datenschutz" class="hover:text-brand-secondary transition-colors">Datenschutz</a>
+                <a href="/#kontakt" class="hover:text-brand-secondary transition-colors">Kontakt</a>
+            </div>
+
         </div>
     </div>
 </footer>
