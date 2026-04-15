@@ -11,9 +11,35 @@
         <a href="/#kontakt" class="bg-brand-primary text-white px-6 py-2 rounded-xl font-bold transition">Kontakt</a>
       </div>
 
-      <button id="menu-toggle" class="md:hidden text-slate-300">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+      <button id="mobile-menu-button" class="md:hidden text-slate-300">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
       </button>
     </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden pb-6 space-y-4">
+      <a href="/ueber-mich" class="block text-slate-300 hover:text-white transition">Über mich</a>
+      <a href="/projekte" class="block text-slate-300 hover:text-white transition">Projekte</a>
+      <a href="/#kontakt" class="block text-brand-primary font-bold">Kontakt</a>
+    </div>
   </div>
 </header>
+
+<script>
+    // Jetzt finden die IDs zueinander
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    }
+</script>
