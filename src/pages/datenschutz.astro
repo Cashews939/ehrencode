@@ -1,0 +1,29 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Datenschutz">
+    <main class="max-w-3xl mx-auto px-6 py-20">
+        <header class="mb-12">
+            <h1 class="text-4xl font-extrabold text-white mb-4">Datenschutzerklärung</h1>
+            <div class="h-1 w-20 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-full"></div>
+        </header>
+
+        <div class="space-y-10 bg-slate-900/50 border border-slate-800 p-8 md:p-12 rounded-3xl shadow-2xl text-slate-300">
+            <section>
+                <h2 class="text-sm font-bold text-brand-primary uppercase tracking-widest mb-4">1. Datenschutz auf einen Blick</h2>
+                <p>Diese Website verzichtet bewusst auf Analyse-Cookies oder Tracking-Tools von Drittanbietern. Personenbezogene Daten werden nur verarbeitet, wenn dies technisch notwendig ist (z.B. Hosting-Logs).</p>
+            </section>
+
+            <section>
+                <h2 class="text-sm font-bold text-brand-secondary uppercase tracking-widest mb-4">2. Hosting</h2>
+                <p>Diese Website wird bei <strong>Vercel</strong> gehostet. Vercel erhebt Daten über die Zugriffe auf die Seite (Server-Logfiles). Dies dient der Sicherheit und Performance.</p>
+            </section>
+
+            <section>
+                <h2 class="text-sm font-bold text-brand-primary uppercase tracking-widest mb-4">3. Ihre Rechte</h2>
+                <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung oder Löschung Ihrer gespeicherten Daten. Kontaktieren Sie mich dazu einfach per E-Mail.</p>
+            </section>
+        </div>
+    </main>
+</MainLayout>
