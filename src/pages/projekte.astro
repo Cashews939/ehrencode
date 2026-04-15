@@ -1,0 +1,61 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Projekte & Referenzen | EhrenCode">
+    <main class="max-w-6xl mx-auto px-6 py-20">
+        <header class="mb-16">
+            <h2 class="text-sm font-bold text-brand-secondary uppercase tracking-[0.3em] mb-4">Referenzen</h2>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6">
+                Digitale <span class="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">Erfolgsgeschichten</span>
+            </h1>
+            <p class="text-xl text-slate-400 max-w-2xl leading-relaxed">
+                Hier siehst du eine Auswahl an Projekten, bei denen ich Vereine auf dem Weg zur modernen Webpräsenz unterstützt habe.
+            </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="group bg-slate-900 border border-slate-800 rounded-[2.5rem] overflow-hidden hover:border-brand-primary transition-all duration-500">
+                <div class="aspect-video bg-slate-800 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-500">
+                    🏢
+                </div>
+                <div class="p-8 md:p-10">
+                    <div class="flex gap-2 mb-4">
+                        <span class="text-[10px] font-bold uppercase tracking-widest bg-brand-primary/10 text-brand-primary px-3 py-1 rounded-full border border-brand-primary/20">Modernisierung</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest bg-slate-800 text-slate-400 px-3 py-1 rounded-full">Astro</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Kong-Verein e.V.</h3>
+                    <p class="text-slate-400 mb-6 leading-relaxed">
+                        Kompletter Relaunch der veralteten Vereinshomepage. Fokus auf schnelle Ladezeiten, mobiles Design und eine einfache Struktur für die Mitgliederverwaltung.
+                    </p>
+                    <div class="flex items-center gap-4 text-sm font-bold text-white">
+                        <span class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span> Live geschaltet
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-slate-900/40 border border-slate-800 border-dashed rounded-[2.5rem] flex flex-col items-center justify-center p-12 text-center">
+                <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center text-2xl text-slate-500 mb-4 group-hover:animate-bounce">
+                    +
+                </div>
+                <h3 class="text-xl font-bold text-slate-400 mb-2">Dein Verein?</h3>
+                <p class="text-slate-500 text-sm max-w-xs">
+                    Ich suche ständig nach neuen ehrenamtlichen Projekten. Melde dich einfach bei mir!
+                </p>
+                <a href="/#kontakt" class="mt-6 text-brand-secondary font-bold text-sm hover:underline">Projekt anfragen →</a>
+            </div>
+        </div>
+
+        <section class="mt-32 p-12 bg-gradient-to-b from-slate-900/50 to-transparent border-t border-slate-800 rounded-t-[3rem] text-center">
+            <h2 class="text-slate-500 text-sm font-bold uppercase tracking-widest mb-8">Eingesetzte Technologien</h2>
+            <div class="flex flex-wrap justify-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+                <span class="text-white font-bold text-xl">Astro</span>
+                <span class="text-white font-bold text-xl">Tailwind CSS</span>
+                <span class="text-white font-bold text-xl">Vercel</span>
+                <span class="text-white font-bold text-xl">GitHub</span>
+            </div>
+        </section>
+    </main>
+</Layout>

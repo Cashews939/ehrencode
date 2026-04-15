@@ -1,0 +1,52 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Über mich | IT-Expertise trifft Ehrenamt">
+    <main class="max-w-4xl mx-auto px-6 py-20">
+        <header class="mb-16 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6">
+                Wer steckt hinter <span class="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">EhrenCode</span>?
+            </h1>
+            <div class="h-1 w-20 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-full mx-auto"></div>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+            <div class="space-y-6 text-slate-300 leading-relaxed">
+                <h2 class="text-2xl font-bold text-white">Moin, ich bin Shing-Kong Man</h2>
+                <p>
+                    Hauptberuflich bin ich als Experte im IT-Service-Management bei der <strong>adesso insurance solutions GmbH</strong> tätig. Dort kümmere ich mich darum, dass komplexe IT-Prozesse reibungslos funktionieren.
+                </p>
+                <p>
+                    Privat brenne ich für die Webentwicklung. Mir ist aufgefallen, dass viele lokale Vereine und ehrenamtliche Organisationen zwar großartige Arbeit leisten, ihre Webseiten aber oft in den 2000er-Jahren stehen geblieben sind.
+                </p>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-8 rounded-[2rem] shadow-2xl flex items-center justify-center">
+                <span class="text-8xl">👨‍💻</span>
+            </div>
+        </div>
+
+        <section class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 p-10 rounded-[3rem] mb-20">
+            <h2 class="text-sm font-bold text-brand-secondary uppercase tracking-widest mb-6">Meine Motivation</h2>
+            <h3 class="text-3xl font-bold text-white mb-8">Warum ich das ehrenamtlich mache</h3>
+            <div class="grid sm:grid-cols-2 gap-8 text-slate-400">
+                <div class="space-y-3">
+                    <h4 class="text-white font-semibold">Digitale Teilhabe</h4>
+                    <p>Ein kleiner Verein sollte kein riesiges Budget brauchen, um im Netz professionell gefunden zu werden.</p>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="text-white font-semibold">Wissenstransfer</h4>
+                    <p>Ich möchte moderne Technologien wie Astro und Tailwind nutzen, um nachhaltige Lösungen zu schaffen.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="text-center">
+            <p class="text-slate-400 mb-8 italic">Hast du Fragen zu meinem Hintergrund oder einem Projekt?</p>
+            <a href="/#kontakt" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-8 py-3 rounded-xl transition">
+                <span>Lass uns vernetzen</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </a>
+        </div>
+    </main>
+</MainLayout>
