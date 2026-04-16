@@ -29,7 +29,7 @@ import MainLayout from '../layouts/MainLayout.astro';
             <div class="p-8 bg-slate-900/50 border border-slate-800 rounded-3xl">
                 <div class="w-12 h-12 bg-brand-primary/20 rounded-2xl flex items-center justify-center text-brand-primary text-2xl mb-6">🚀</div>
                 <h3 class="text-xl font-bold text-white mb-4">Modernisierung</h3>
-                <p class="text-slate-400 leading-relaxed">Veraltete Webseiten bringen wir auf den neuesten Stand der Technik – schnell, sicher und mobil optimiert.</p>
+                <p class="text-slate-400 leading-relaxed">Veraltete Webseiten bringe ich auf den neuesten Stand der Technik – schnell, sicher und mobil optimiert.</p>
             </div>
             <div class="p-8 bg-slate-900/50 border border-slate-800 rounded-3xl">
                 <div class="w-12 h-12 bg-brand-secondary/20 rounded-2xl flex items-center justify-center text-brand-secondary text-2xl mb-6">🤝</div>
@@ -44,17 +44,41 @@ import MainLayout from '../layouts/MainLayout.astro';
         </div>
     </section>
 
-    <section id="kontakt" class="container mx-auto px-6 py-24 mb-20">
-        <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-[3rem] p-12 text-center relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 blur-[100px] rounded-full"></div>
-            <h2 class="text-4xl font-bold text-white mb-6">Lass uns reden!</h2>
-            <p class="text-xl text-slate-400 mb-10 max-w-xl mx-auto">
-                Hast du eine Idee oder braucht dein Verein digitale Hilfe? Schreib mir einfach eine Nachricht.
-            </p>
-            <a href="mailto:skm79925+EhrenCode@gmail.com" class="inline-flex items-center gap-3 bg-white text-slate-950 px-10 py-5 rounded-2xl font-bold text-xl hover:scale-105 transition-transform">
-                <span>E-Mail schreiben</span>
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
+    <section id="kontakt" class="py-24 relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-slate-900/50 border border-slate-800 p-8 md:p-12 rounded-[3rem] shadow-2xl">
+                <h2 class="text-3xl font-bold text-white mb-2 text-center">Lass uns was bewegen</h2>
+                <p class="text-slate-400 text-center mb-10">Hast du ein Projekt oder eine Frage? Schreib mir einfach!</p>
+
+                <form action="https://formspree.io/f/xwvalrzw" method="POST" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label for="name" class="text-sm font-semibold text-slate-300 ml-1">Dein Name</label>
+                            <input type="text" name="name" id="name" required 
+                                class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-5 py-3 text-white focus:outline-none focus:border-brand-primary transition" 
+                                placeholder="Vor- & Nachname">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="email" class="text-sm font-semibold text-slate-300 ml-1">Deine E-Mail</label>
+                            <input type="email" name="email" id="email" required 
+                                class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-5 py-3 text-white focus:outline-none focus:border-brand-primary transition" 
+                                placeholder="name@beispiel.de">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="message" class="text-sm font-semibold text-slate-300 ml-1">Deine Nachricht</label>
+                        <textarea name="message" id="message" rows="5" required 
+                            class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-5 py-3 text-white focus:outline-none focus:border-brand-primary transition" 
+                            placeholder="Wie kann ich deinem Verein helfen?"></textarea>
+                    </div>
+
+                    <button type="submit" 
+                        class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-bold py-4 rounded-2xl hover:scale-[1.02] transition-transform shadow-lg shadow-brand-primary/20">
+                        Nachricht absenden
+                    </button>
+                </form>
+            </div>
         </div>
     </section>
 </MainLayout>
