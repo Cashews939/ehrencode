@@ -51,6 +51,7 @@ import MainLayout from '../layouts/MainLayout.astro';
                 <p class="text-slate-400 text-center mb-10">Hast du ein Projekt oder eine Frage? Schreib mir einfach!</p>
 
                 <form action="https://formspree.io/f/xwvalrzw" method="POST" class="space-y-6">
+                    <input type="hidden" name="_next" value="http://localhost:4321/danke">
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label for="name" class="text-sm font-semibold text-slate-300 ml-1">Dein Name</label>
