@@ -16,8 +16,12 @@ import MainLayout from '../layouts/MainLayout.astro';
 
         <div class="grid md:grid-cols-2 gap-8">
             <div class="group bg-slate-900 border border-slate-800 rounded-[2.5rem] overflow-hidden hover:border-brand-primary transition-all duration-500">
-                <div class="aspect-video bg-slate-800 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-500">
-                    🏢
+                <div class="aspect-video bg-slate-800 flex items-center justify-center overflow-hidden">
+                    <img 
+                        src="/EhrenCodeLogo.png" 
+                        alt="EhrenCode Logo" 
+                        class="w-32 h-32 md:w-48 md:h-48 object-contain group-hover:scale-110 transition-transform duration-500"
+                    />  
                 </div>
                 <div class="p-8 md:p-10">
                     <div class="flex gap-2 mb-4">
