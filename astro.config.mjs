@@ -3,9 +3,15 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
+
+  site: 'https://ehrencode.org',  
+
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+
+  integrations: [sitemap()]
 });
