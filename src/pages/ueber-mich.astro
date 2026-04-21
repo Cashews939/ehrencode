@@ -21,8 +21,21 @@ import MainLayout from '../layouts/MainLayout.astro';
                     Ich bewundere das Engagement in unseren Vereinen. Oft fehlt im Ehrenamt jedoch schlicht die Zeit, sich auch noch um moderne Web-Technologien zu kümmern. Mein Ziel ist es, diese wertvolle Arbeit durch einen zeitgemäßen digitalen Auftritt sichtbarer und für neue Mitglieder zugänglicher zu machen.
                 </p>
             </div>
-            <div class="bg-slate-900 border border-slate-800 p-8 rounded-[2rem] shadow-2xl flex items-center justify-center">
-                <span class="text-8xl">👨‍💻</span>
+
+            <div class="relative flex items-center justify-center">
+                <div class="absolute inset-0 bg-gradient-to-tr from-brand-primary/20 to-brand-secondary/20 blur-3xl rounded-full"></div>
+                
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-[2.5rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    
+                    <div class="relative bg-slate-900 border border-slate-800 p-2 rounded-[2.5rem] shadow-2xl overflow-hidden">
+                        <img 
+                            src="/images/shing-kong-tech-avatar.png" 
+                            alt="Shing-Kong Man" 
+                            class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-[2rem] grayscale hover:grayscale-0 transition-all duration-500"
+                        />
+                    </div>
+                </div>
             </div>
         </div>
 
