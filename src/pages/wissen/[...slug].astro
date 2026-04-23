@@ -1,0 +1,57 @@
+---
+import { getCollection, render } from 'astro:content'; // render hier importieren!
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export async function getStaticPaths() {
+  const wissenEntries = await getCollection('wissen');
+  return wissenEntries.map(entry => ({
+    // Wir nutzen entry.id als slug für die neue API
+    params: { slug: entry.id }, 
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+
+// Der neue Weg in Astro 5:
+const { Content } = await render(entry);
+---
+
+<MainLayout title={entry.data.title}>
+  <main class="max-w-3xl mx-auto px-6 py-20">
+    
+    <div class="mb-12">
+      <a 
+        href="/" 
+        class="inline-flex items-center gap-2 text-slate-400 hover:text-brand-primary transition-colors group"
+      >
+        <div class="w-8 h-8 rounded-full border border-slate-800 flex items-center justify-center group-hover:border-brand-primary/50 group-hover:bg-brand-primary/10 transition-all">
+          <svg 
+            class="w-4 h-4 rotate-180 transform group-hover:-translate-x-1 transition-transform" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <span class="text-sm font-medium">Zurück zur Übersicht</span>
+      </a>
+    </div>
+    <article class="prose prose-invert prose-slate max-w-none 
+      prose-headings:text-white 
+      prose-a:text-brand-primary 
+      prose-strong:text-white 
+      prose-img:rounded-3xl">
+      
+      <Content />
+      
+    </article>
+
+    <div class="mt-20 pt-8 border-t border-slate-900 text-center">
+      <p class="text-slate-500 text-sm">
+        Hast du Fragen zu diesem Thema? <a href="/#kontakt" class="text-brand-primary hover:underline">Schreib mir einfach.</a>
+      </p>
+    </div>
+  </main>
+</MainLayout>
