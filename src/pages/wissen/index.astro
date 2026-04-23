@@ -1,0 +1,72 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const alleBeitraege = await getCollection('wissen');
+const sortierteBeitraege = alleBeitraege.sort(
+  (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+---
+
+<MainLayout title="Wissen für Vereine | EhrenCode Archiv">
+  <main class="py-24 bg-slate-950 min-h-screen">
+    <div class="max-w-4xl mx-auto px-6">
+      
+      <header class="mb-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+          Wissen für <span class="text-brand-primary">Vereine</span>
+        </h1>
+        <p class="text-slate-400 text-lg max-w-2xl">
+          Praktische Tipps zu Technik, Sicherheit und Digitalisierung im Ehrenamt – verständlich erklärt.
+        </p>
+      </header>
+
+      <div class="grid gap-8">
+        {sortierteBeitraege.map((beitrag) => (
+          <a 
+            href={`/wissen/${beitrag.id}`} 
+            class="group block p-8 bg-slate-900/50 border border-slate-800 rounded-[2.5rem] hover:border-brand-primary/50 transition-all shadow-xl hover:shadow-brand-primary/5"
+          >
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <span class="px-3 py-1 bg-brand-primary/10 text-brand-primary text-[10px] font-bold uppercase tracking-widest rounded-full border border-brand-primary/20">
+                    {beitrag.data.category}
+                  </span>
+                  <time class="text-slate-500 text-xs">
+                    {new Date(beitrag.data.pubDate).toLocaleDateString('de-DE', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </time>
+                </div>
+                <h2 class="text-2xl font-bold text-white group-hover:text-brand-primary transition-colors">
+                  {beitrag.data.title}
+                </h2>
+                <p class="text-slate-400 leading-relaxed line-clamp-2">
+                  {beitrag.data.description}
+                </p>
+              </div>
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-brand-primary transition-colors">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-20 p-12 bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-[3rem] text-center">
+        <h3 class="text-2xl font-bold text-white mb-4">Dein Thema nicht dabei?</h3>
+        <p class="text-slate-400 mb-8">Schreib mir, worüber du gerne mehr erfahren würdest.</p>
+        <a href="/#kontakt" class="inline-block bg-brand-primary text-white font-bold px-8 py-4 rounded-2xl hover:scale-105 transition-all">
+          Themenvorschlag senden
+        </a>
+      </div>
+    </div>
+  </main>
+</MainLayout>
