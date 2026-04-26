@@ -1,23 +1,24 @@
 ---
-import { getCollection, render } from 'astro:content'; // render hier importieren!
+import { getCollection, render } from 'astro:content'; 
 import MainLayout from '../../layouts/MainLayout.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const wissenEntries = await getCollection('wissen');
   return wissenEntries.map(entry => ({
-    // Wir nutzen entry.id als slug für die neue API
     params: { slug: entry.id }, 
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-
-// Der neue Weg in Astro 5:
+const { title, description, thumbnail } = entry.data;
 const { Content } = await render(entry);
+
+console.log("Das ist mein Thumbnail:", thumbnail);
 ---
 
-<MainLayout title={entry.data.title}>
+<MainLayout title={title}>
   <main class="max-w-3xl mx-auto px-6 py-20">
     
     <div class="mb-12">
@@ -38,6 +39,28 @@ const { Content } = await render(entry);
         <span class="text-sm font-medium">Zurück zur Übersicht</span>
       </a>
     </div>
+
+    {thumbnail && (
+      <div class="mb-10">
+        <Image 
+          src={thumbnail} 
+          alt={title} 
+          width={1200} 
+          height={675} 
+          class="rounded-3xl shadow-2xl border border-white/5 object-cover aspect-video"
+        />
+      </div>
+    )}
+
+    <header class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+        {title}
+      </h1>
+      <p class="text-xl text-slate-400 leading-relaxed">
+        {description}
+      </p>
+    </header>
+
     <article class="prose prose-invert prose-slate max-w-none 
       prose-headings:text-white 
       prose-a:text-brand-primary 
