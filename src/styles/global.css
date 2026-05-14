@@ -15,3 +15,23 @@ html {
 .glow-hover:hover {
   box-shadow: 0 0 20px 2px rgba(139, 92, 246, 0.5);
 }
+
+@theme {
+  --color-brand-primary: var(--color-primary);
+  --color-brand-secondary: var(--color-secondary);
+  --color-bg-base: var(--color-bg);
+  --color-text-base: var(--color-text);
+  
+  /* NEU: Retro Alien Farben */
+  --color-retro-green: #00ff00;
+  --color-retro-yellow: #ffff00;
+  --color-retro-red: #ff0000;
+}
+
+:root {
+  /* Deine modernisierten Midnight-Violet Farben bleiben für das Layout */
+  --color-primary: #8b5cf6; 
+  --color-secondary: #06b6d4;
+  --color-bg: #0f0a19;
+  --color-text: #f8fafc;
+}

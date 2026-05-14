@@ -1,5 +1,4 @@
 ---
-// Dieser Teil muss ganz nach oben in die Datei!
 const pathname = new URL(Astro.url).pathname;
 const currentPath = pathname.replace(/\/$/, ""); 
 ---
@@ -7,8 +6,9 @@ const currentPath = pathname.replace(/\/$/, "");
 <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
   <div class="container mx-auto px-6">
     <nav class="flex items-center justify-between py-5">
-      <a href="/" class="text-2xl font-bold bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
-        EhrenCode
+      
+      <a href="/" class="text-2xl font-semibold tracking-tight inline-flex items-center">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#8b5cf6] to-[#6366f1]">Ehren</span><span class="bg-clip-text text-transparent bg-gradient-to-r from-[#6366f1] via-[#06b6d4] to-[#22d3ee]">Code</span>
       </a>
 
       <div class="hidden md:flex items-center space-x-10">
@@ -25,7 +25,6 @@ const currentPath = pathname.replace(/\/$/, "");
     </nav>
 
     <div id="mobile-menu" class="hidden md:hidden pb-6 space-y-4">
-      
       {currentPath !== "" && (
         <a href="/" class="block text-slate-300 hover:text-white transition">Startseite</a>
       )}

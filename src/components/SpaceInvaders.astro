@@ -1,0 +1,173 @@
+---
+---
+<div id="game-overlay" class="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center hidden">
+  <div class="relative bg-black p-4 rounded-xl border border-slate-800 shadow-2xl">
+    
+    <canvas id="gameCanvas" width="700" height="500" class="bg-black rounded-lg"></canvas>
+    
+    <div class="mt-4 flex justify-between items-center text-white font-mono text-xs px-2">
+      <span class="text-[#00ff00]">SCORE: &lt;1&gt;</span>
+      <span class="text-white">HI-SCORE</span>
+      <span class="text-[#ffff00]">SCORE: &lt;2&gt;</span>
+    </div>
+    <button id="close-game" class="absolute -top-10 right-0 text-slate-500 hover:text-white text-sm">Schließen (Esc)</button>
+  </div>
+</div>
+
+<script>
+  let canvas, ctx, gameLoop, player, bullets, aliens, direction, score, alienSpeed;
+  const overlay = document.getElementById('game-overlay');
+
+  window.startSpaceInvaders = function() {
+    overlay.classList.remove('hidden');
+    initGame();
+  };
+  
+    function playSound(freq, type, duration) {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        oscillator.type = type; // 'square' für Retro, 'sawtooth' für aggressiv
+        oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        
+        // Lautstärke-Kurve (verhindert Knacken am Ende)
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + duration);
+    }
+
+  function initGame() {
+    canvas = document.getElementById('gameCanvas');
+    ctx = canvas.getContext('2d');
+    score = 0;
+    alienSpeed = 1; // Langsame Startgeschwindigkeit
+    player = { x: canvas.width / 2 - 15, y: canvas.height - 40, w: 30, h: 20, speed: 7 };
+    bullets = [];
+    aliens = [];
+    direction = 1;
+
+    // Aliens im Retro-Farblayout (11 Spalten, 5 Reihen)
+    for (let r = 0; r < 5; r++) {
+      for (let c = 0; c < 11; c++) {
+        let color;
+        if (r === 0) color = '#ff0000';      // Rot oben
+        else if (r < 3) color = '#ffff00';   // Gelb mitte
+        else color = '#00ff00';              // Grün unten
+
+        aliens.push({
+          x: c * 45 + 100,
+          y: r * 35 + 100,
+          w: 25, h: 15,
+          color: color
+        });
+      }
+    }
+
+    if (gameLoop) cancelAnimationFrame(gameLoop);
+    update();
+  }
+
+  function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Retro UI Texte (Score)
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '20px "Courier New", Courier, monospace';
+    ctx.fillText(score.toString().padStart(6, '0'), 50, 40); 
+    ctx.fillText('000000', canvas.width / 2 - 35, 40);
+    ctx.fillText('000000', canvas.width - 120, 40);
+
+    // --- DEINE RAKETE 🚀 ZEICHNEN ---
+    ctx.save(); // Speicher den aktuellen Zustand
+    // Verschiebe den Nullpunkt zur Mitte der Rakete
+    ctx.translate(player.x + player.w / 2, player.y + player.h / 2);
+    // Rotations-Trick: -45 Grad (oder -0.78 Radiant), damit die Emoji-Rakete nach oben zeigt
+    ctx.rotate(-45 * Math.PI / 180); 
+    ctx.font = '30px serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('🚀', 0, 0); 
+    ctx.restore(); // Setze den Zustand zurück für den Rest des Spiels
+
+    // Schüsse (Deine Laser)
+    bullets.forEach((b, index) => {
+      b.y -= 8;
+      ctx.fillStyle = '#22d3ee';
+      ctx.fillRect(b.x, b.y, 3, 10);
+      if (b.y < 0) bullets.splice(index, 1);
+    });
+
+    // Aliens bewegen
+    let edge = false;
+    ctx.font = '20px serif';
+    ctx.textBaseline = 'top';
+
+    aliens.forEach(a => {
+      a.x += direction * alienSpeed;
+      if (a.x + a.w > canvas.width - 20 || a.x < 20) edge = true;
+      
+      ctx.fillStyle = a.color;
+      ctx.fillText('👾', a.x, a.y);
+    });
+
+    if (edge) {
+      direction *= -1;
+      aliens.forEach(a => a.y += 15);
+      alienSpeed += 0.05;
+    }
+
+    // Kollisionsabfrage (leicht angepasst für die Emoji-Größe)
+    bullets.forEach((b, bi) => {
+      aliens.forEach((a, ai) => {
+       if (b.x > a.x && b.x < a.x + a.w && b.y > a.y - 15 && b.y < a.y) {
+        aliens.splice(ai, 1);
+        bullets.splice(bi, 1);
+        score += 10;
+        playSound(150, 'sawtooth', 0.2); // Tieferer, rauer Sound für die Explosion
+        }
+      });
+    });
+
+    // ... (Game Over Check & requestAnimationFrame wie gehabt)
+    if (aliens.length === 0) {
+      playSound(880, 'square', 0.3);
+        alert("SIEG! Alle Aliens besiegt.");
+      closeGame();
+    } else if (aliens.some(a => a.y + a.h > player.y)) {
+      playSound(100, 'square', 0.5); // Tiefer "Fail"-Ton
+      alert("GAME OVER!");
+      closeGame();
+    } else {
+      gameLoop = requestAnimationFrame(update);
+    }
+  }
+
+  // Steuerung & Schließen
+  window.addEventListener('keydown', (e) => {
+    if (overlay.classList.contains('hidden')) return;
+    
+    if (e.key === 'ArrowLeft' && player.x > 10) player.x -= player.speed;
+    if (e.key === 'ArrowRight' && player.x < canvas.width - player.w - 10) player.x += player.speed;
+    
+   if (e.key === ' ' || e.key === 'Spacebar') {
+        bullets.push({ x: player.x + player.w / 2 - 1, y: player.y });
+        playSound(440, 'square', 0.1); // Kurzer, hoher Piep für den Laser
+        e.preventDefault();
+        }
+    
+    if (e.key === 'Escape') closeGame();
+  });
+
+  function closeGame() {
+    overlay.classList.add('hidden');
+    cancelAnimationFrame(gameLoop);
+  }
+
+  document.getElementById('close-game').addEventListener('click', closeGame);
+</script>
