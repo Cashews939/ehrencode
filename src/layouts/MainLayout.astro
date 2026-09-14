@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SEO } from "astro-seo";
 import SpaceInvaders from '../components/SpaceInvaders.astro';
+import ChatWidget from '../components/ChatWidget';
 const { title } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -71,6 +72,8 @@ const { title } = Astro.props;
         }
       });
     </script>
+
+    <ChatWidget client:load />
 
 </body>
 </html>
