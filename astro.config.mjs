@@ -6,6 +6,7 @@ import keystatic from '@keystatic/astro';
 import react from '@astrojs/react'; 
 // 1. Den Vercel-Adapter importieren
 import vercel from '@astrojs/vercel';
+import markdoc from '@astrojs/markdoc';
 
 export default defineConfig({
   site: 'https://ehrencode.org',  
@@ -23,6 +24,7 @@ export default defineConfig({
   integrations: [
     sitemap(),
     react(), 
-    keystatic()
+    keystatic(),
+    markdoc()
   ]
 });

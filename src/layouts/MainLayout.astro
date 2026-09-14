@@ -51,6 +51,11 @@ const { title } = Astro.props;
       let current = 0;
 
       document.addEventListener('keydown', (e) => {
+        const target = e.target;
+        if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+          return;
+        }
+
         const key = e.key.toLowerCase();
         if (key === pattern[current]) {
           current++;
