@@ -14,6 +14,7 @@ const currentPath = pathname.replace(/\/$/, "");
       <div class="hidden md:flex items-center space-x-10">
         <a href="/ueber-mich" class="text-slate-300 hover:text-white transition">Über mich</a>
         <a href="/projekte" class="text-slate-300 hover:text-white transition">Projekte</a>
+        <a href="/wissen" class="text-slate-300 hover:text-white transition">Wissen</a>
         <a href="/#kontakt" class="bg-brand-primary text-white px-6 py-2 rounded-xl font-bold transition">Kontakt</a>
       </div>
 
@@ -35,6 +36,10 @@ const currentPath = pathname.replace(/\/$/, "");
 
       {currentPath !== "/projekte" && (
         <a href="/projekte" class="block text-slate-300 hover:text-white transition">Projekte</a>
+      )}
+
+      {currentPath !== "/wissen" && (
+        <a href="/wissen" class="block text-slate-300 hover:text-white transition">Wissen</a>
       )}
 
       <a href="/#kontakt" class="block text-brand-primary font-bold">Kontakt</a>

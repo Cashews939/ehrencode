@@ -1,6 +1,8 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
+import WebsiteCheck from '../components/WebsiteCheck';
+import FAQ from '../components/FAQ';
 
 // Hol dir die Beiträge
 const alleBeitraege = await getCollection('wissen');
@@ -100,6 +102,20 @@ const neuesterBeitrag = sortierteBeitraege[0];
                     </div>
                 </div>
             )}
+        </div>
+    </section>
+
+    <!-- Interaktiver Vereins-Website-Check -->
+    <section class="py-24 bg-slate-900/30 border-t border-slate-900">
+        <div class="container mx-auto px-6">
+            <WebsiteCheck client:visible />
+        </div>
+    </section>
+
+    <!-- Häufige Fragen (FAQ) -->
+    <section class="py-24 bg-slate-950 border-t border-slate-900">
+        <div class="container mx-auto px-6">
+            <FAQ client:visible />
         </div>
     </section>
 
