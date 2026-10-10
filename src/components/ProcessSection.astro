@@ -1,0 +1,122 @@
+---
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+  tag: string;
+  icon: string;
+}
+
+const steps: Step[] = [
+  {
+    number: "01",
+    title: "Kennenlernen & Wünsche",
+    description: "In einem entspannten Gespräch sprechen wir über euren Verein, bisherige Hürden und was euch wirklich wichtig ist (News, Teams, Termine, Mitgliedsantrag).",
+    tag: "Unverbindlich & flexibel",
+    icon: "💬"
+  },
+  {
+    number: "02",
+    title: "Konzept & Design",
+    description: "Ich erstelle eine moderne Struktur und ein passendes Design in euren Vereinsfarben – optimiert für alle Smartphones und barrierefrei bedienbar.",
+    tag: "Im Look eures Vereins",
+    icon: "🎨"
+  },
+  {
+    number: "03",
+    title: "Umsetzung & Inhalte",
+    description: "Die Website wird blitzschnell und sicher gebaut (mit Astro). Bestehende Texte, Bilder, Ansprechpartner und Chroniken werden sorgfältig eingepflegt.",
+    tag: "Moderne Web-Technik",
+    icon: "⚡"
+  },
+  {
+    number: "04",
+    title: "Übergabe & CMS-Einführung",
+    description: "Eure Verantwortlichen lernen das kinderleichte Redaktionssystem (Keystatic) kennen. Ihr könnt Spielberichte, Termine und News selbst pflegen – ohne Programmierkenntnisse.",
+    tag: "Kein IT-Wissen nötig",
+    icon: "🎓"
+  },
+  {
+    number: "05",
+    title: "Go-Live & Unabhängigkeit",
+    description: "Eure neue Vereinsseite geht live! Sie läuft dauerhaft wartungsarm, spart euch teure Agentur- oder Servergebühren und gibt eurem Verein echten digitalen Rückenwind.",
+    tag: "100 % ehrenamtlich",
+    icon: "🚀"
+  }
+];
+---
+
+<section id="prozess" class="py-24 bg-slate-950/60 border-t border-slate-900 relative overflow-hidden">
+  <!-- Subtiler Hintergrund-Glanz -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" aria-hidden="true"></div>
+
+  <div class="container mx-auto px-6 relative z-10 max-w-6xl">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs font-bold uppercase tracking-[0.25em] text-brand-secondary bg-brand-secondary/10 px-3.5 py-1.5 rounded-full border border-brand-secondary/20 inline-block mb-4">
+        Zusammenarbeit
+      </span>
+      <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
+        In 5 Schritten zur <br>
+        <span class="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
+          neuen Vereins-Website
+        </span>
+      </h2>
+      <p class="text-slate-400 text-lg leading-relaxed">
+        Gemeinsam auf Augenhöhe, ohne bürokratische Hürden und ohne Zeitdruck. So läuft die Modernisierung ab:
+      </p>
+    </div>
+
+    <!-- Schritte-Grid -->
+    <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
+      {steps.map((step, index) => (
+        <li 
+          class={`group relative bg-slate-900/60 border border-slate-800 rounded-3xl p-8 hover:border-brand-primary/50 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 ${
+            index === 4 ? "md:col-span-2 lg:col-span-1 lg:col-start-2" : ""
+          }`}
+        >
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-3xl font-black bg-gradient-to-br from-white to-slate-500 bg-clip-text text-transparent tracking-tight">
+                {step.number}
+              </span>
+              <div class="w-12 h-12 rounded-2xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-xl shadow-inner group-hover:scale-110 group-hover:border-brand-primary/40 transition-transform" aria-hidden="true">
+                {step.icon}
+              </div>
+            </div>
+
+            <span class="text-[11px] font-bold uppercase tracking-wider text-brand-primary bg-brand-primary/10 border border-brand-primary/20 px-2.5 py-1 rounded-full inline-block mb-3">
+              {step.tag}
+            </span>
+
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brand-secondary transition-colors">
+              {step.title}
+            </h3>
+
+            <p class="text-slate-400 text-sm leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-800/60 flex items-center text-xs font-semibold text-slate-500 group-hover:text-slate-400 transition-colors">
+            <span>Schritt {index + 1} von {steps.length}</span>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <!-- Call to Action Banner -->
+    <div class="mt-16 text-center">
+      <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-2 sm:p-3 bg-slate-900/80 border border-slate-800 rounded-2xl md:rounded-full">
+        <span class="text-slate-300 text-sm px-4">
+          Habt ihr Fragen zum Ablauf oder möchtet einfach mal unverbindlich sprechen?
+        </span>
+        <a 
+          href="#kontakt" 
+          class="bg-brand-primary hover:bg-brand-primary/90 text-white font-bold px-6 py-2.5 rounded-xl md:rounded-full text-sm transition-all hover:scale-105 shadow-md shadow-brand-primary/20 whitespace-nowrap"
+        >
+          Jetzt Kennenlernen starten →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -3,6 +3,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 import WebsiteCheck from '../components/WebsiteCheck';
 import FAQ from '../components/FAQ';
+import ProcessSection from '../components/ProcessSection.astro';
 
 // Hol dir die Beiträge
 const alleBeitraege = await getCollection('wissen');
@@ -60,6 +61,9 @@ const neuesterBeitrag = sortierteBeitraege[0];
             </div>
         </div>
     </section>
+
+    <!-- 5-Schritte-Prozess -->
+    <ProcessSection />
 
     <section class="py-24 bg-slate-950">
         <div class="max-w-4xl mx-auto px-6">
